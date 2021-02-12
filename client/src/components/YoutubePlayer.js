@@ -19,7 +19,10 @@ const searchBar = {
 // search bar and the player
 function YoutubePlayer() {
   const [ytid, setYtid] = useState("2g811Eo7K8U");
+  const submitHandler=()=>
+  {
 
+  }
   const opts = {
     height: '500',
     width: '500',
@@ -28,7 +31,7 @@ function YoutubePlayer() {
     <div>
       <form style={searchBar}>
           <input type="text" name="query" placeholder="Search the song" />
-        <input type="submit" value="Submit" />
+        <input type="submit"onSubmit={submitHandler} value="Submit" />
       </form>
 
       <YouTube videoId={ytid} opts={opts} />
