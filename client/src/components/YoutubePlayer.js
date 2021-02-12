@@ -4,19 +4,14 @@ import YouTube from 'react-youtube';
 
 const searchBar = {
 
-    margin:'40px',
+    marginTop:'-50px',
+    marginBottom:'20px',
     paddingLeft:'100px',
     paddingRight:'100px',
     paddingTop:'10px',
     paddingBottom:'10px',
     backgroundColor:'gray',
     borderRadius:'50px'
-}
-
-const player = {
-  justifyContent:'center',
-  alignItems:'center',
-  padding:'30px',
 }
 
 
@@ -36,7 +31,7 @@ function YoutubePlayer() {
         <input type="submit" value="Submit" />
       </form>
 
-      {/* <YouTube videoId={ytid} opts={opts} /> */}
+      <YouTube videoId={ytid} opts={opts} />
       
     </div>
   )

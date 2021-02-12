@@ -4,6 +4,8 @@ import Peer from "simple-peer";
 import styled from "styled-components";
 import AudioHead from './AudioHead';
 import YoutubePlayer from './YoutubePlayer';
+import boy from '../images/boy.png';
+import girl from '../images/girl.png';
 
 const Container = styled.div`
   height: 100vh;
@@ -121,14 +123,14 @@ function AudioChat() {
   let UserAudio;
   if (stream) {
     UserAudio = (
-      <AudioHead audio={userAudio} muted={true}/>
+      <AudioHead audio={userAudio} muted={true} who={boy}/>
     );
   }
 
   let PartnerAudio;
   if (callAccepted) {
     PartnerAudio = (
-      <AudioHead audio={partnerAudio} muted={false}/>
+      <AudioHead audio={partnerAudio} muted={false} who={girl}/>
     );
   }
 
