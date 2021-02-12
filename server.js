@@ -6,7 +6,7 @@ const socket = require("socket.io");
 const io = socket(server);
 const { uniqueNamesGenerator, adjectives, colors } = require('unique-names-generator');
 
-const port = process.env.PORT ||8060;
+const port = process.env.PORT ||8000;
 
 const users = {};
 
