@@ -6,6 +6,8 @@ const socket = require("socket.io");
 const io = socket(server);
 const { uniqueNamesGenerator, adjectives, colors } = require('unique-names-generator');
 
+const port = process.env.PORT ||8060;
+
 const users = {};
 
 io.on('connection', socket => {
@@ -34,6 +36,6 @@ io.on('connection', socket => {
     })
 });
 
-server.listen(8060, () => console.log('server is running on port 8060'));
+server.listen(PORT, () => console.log(`server is running on port ${PORT}`));
 
 
