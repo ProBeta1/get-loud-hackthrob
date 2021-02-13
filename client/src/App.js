@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <AudioChat />
-      {/* <YoutubePlayer/> */}
+      <YoutubePlayer/>
     </div>
   )
 }

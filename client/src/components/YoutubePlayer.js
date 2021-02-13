@@ -39,10 +39,7 @@ function YoutubePlayer() {
       console.log(query);
   }
   useEffect(() => {
-    console.log('useeefect');
-    let API_KEY=process.env.REACT_APP_GOOGLE_API_KEY;
-    console.log(process.env.REACT_APP_GOOGLE_API_KEY)
-    // https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=YOUR_API_KEY
+    let API_KEY='AIzaSyARMIO1RIusrGebJdzOmTsJ107pMnHUxUg'
     const options = {
       q:query,
       part:'snippet',
