@@ -2,34 +2,30 @@ import React,{useState,useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import searchYoutube from 'youtube-api-v3-search';
 import YouTube from 'react-youtube';
-
-// import { Component } from 'react';
-
-// import YTSearch from 'youtube-api-search'
+import Button from '@material-ui/core/Button';
+import '../App.css'
 const opts = {
-    height: '500',
-    width: '500',
+  width:'400px',
+  height:'400px'
   };
   
 const searchBar = {
-
-    marginTop:'-50px',
-    marginBottom:'20px',
-    paddingLeft:'100px',
-    paddingRight:'100px',
-    paddingTop:'10px',
-    paddingBottom:'10px',
-    backgroundColor:'gray',
-    borderRadius:'50px'
+    margin:'40px',
+    borderRadius:'50px',
+    width:'400px'
 }
 
+const textB = {
+  borderRadius:'30px',
+  margin:'20px',
+  width:'60%',
+  outline:'none',
+  padding:'10px'
+}
 
 function YoutubePlayer() {
-  console.log("funtciot");
-  const [query,setQuery]=useState('twice i cant stop me english karaoke');
-  const [videos,setVideos]=useState([]);
-  const [video,setVideo]=useState('');
-  const [ytid, setYtid] = useState("2g811Eo7K8U");
+  const [query,setQuery]=useState('stay by my side twice karaoke');
+  const [ytid, setYtid] = useState("7sbsQQ-uu8g");
   const {register,handleSubmit,errors}=useForm();
   
   const onSubmit=(e)=>
@@ -51,18 +47,19 @@ function YoutubePlayer() {
     }
     videoSearch();
   }
-   
+   //style={{justifyContent:'center', alignItems:'center',padding:'50px'}}
 
   , [query]);
   return (
-    <div>
+    <div className="container youtube_s" >
       <form style={searchBar} onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" name="query" ref={register({required:'Please Enter all details'})} placeholder="Search the song" />
-        <input type="submit"  value="Submit" />
-        <h1>HIIII</h1>
+          <input type="text" name="query" ref={register({required:'Please Enter all details'})} placeholder="Search the song" style={textB}/>
+          <Button variant="contained" color="secondary" type="submit" value="submit">
+            Play
+          </Button>
       </form>
 
-      <YouTube videoId={ytid} opts={opts} />
+      <YouTube className="youtube_p" videoId={ytid} opts={opts} />
       
     </div>
   )

@@ -3,23 +3,23 @@ import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
 import AudioHead from './AudioHead';
-import YoutubePlayer from './YoutubePlayer';
 import boy from '../images/boy.png';
 import girl from '../images/girl.png';
+import '../App.css'
+import YoutubePlayer from './YoutubePlayer';
+// const Container = styled.div`
+//   height: 100vh;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items:center;
+//   justify-content:center;
+// `;
 
-const Container = styled.div`
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content:center;
-`;
-
-const Row = styled.div`
-  display: flex;
-  width: 100%;
-`;
+// const Row = styled.div`
+//   display: flex;
+//   width: 100%;
+// `;
 
 
 const Audio = styled.audio`
@@ -137,33 +137,27 @@ function AudioChat() {
   let incomingCall;
   if (receivingCall) {
     incomingCall = (
-      <div>
-        <h1>{caller} is calling you</h1>
+      <div className="buttonforaccept">
+        <h1 >{caller} is calling you</h1>
         <button onClick={acceptCall}>Accept</button>
       </div>
     )
   }
   return (
-    <Container>
-      <Row>
+    <div className="container mainpage">
+      <YoutubePlayer/>
         {UserAudio}
-        <YoutubePlayer />
         {PartnerAudio}
-      </Row>
-      <Row>
         {Object.keys(users).map(key => {
           if (key === yourID) {
             return null;
           }
           return (
-            <button onClick={() => callPeer(key)}>Call {key}</button>
+            <button className="buttonforaccept"  onClick={() => callPeer(key)}>Call {key}</button>
           );
         })}
-      </Row>
-      <Row>
         {incomingCall}
-      </Row>
-    </Container>
+        </div>
   );
 }
 
