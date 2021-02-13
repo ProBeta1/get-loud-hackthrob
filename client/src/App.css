@@ -32,11 +32,39 @@
   font-family: 'Courgette', cursive;
   font-size: 20px;
 }
-.expressForm input{
-  background-color: aquamarine;
-  color:black;
-}
+
 .textC{
   color:black;
   font-size: 40px;
+}
+.form_E input{
+   background-color: rgb(48, 192, 248);
+}
+.form_E{
+  color:rgb(93, 113, 131);
+  display: flex;
+  flex-direction: column;
+}
+.form_E label{
+  color:black;
+}
+.textArea{
+  width:400px;
+  height:400px;
+}
+.input_S{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;;
+}
+.form_E .submit_B{
+  width:100px;
+  height: 50px;;
+}
+.textC{
+  color:black;
+}
+TabPanel p{
+  color:black;
+
 }
