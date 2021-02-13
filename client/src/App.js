@@ -3,6 +3,9 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {auth} from './firebase/firebase';
 import Grid from '@material-ui/core/Grid';
 import Typical from 'react-typical'
+import AudioChat from './components/AudioChat';
+import HeartBubble from './components/HeartBubble';
+
 // import AudioChat from './components/AudioChat';
 import Navbar from './components/Navbar'
 
@@ -52,6 +55,7 @@ function App() {
   return (
     <div>
         <Navbar/>
+        <HeartBubble />
     </div>
   );
 }
