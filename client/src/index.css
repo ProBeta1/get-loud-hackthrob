@@ -7,8 +7,8 @@ body, ul, h1, h2, h3, p, button, a, div{
   text-decoration: none;
 }
 body{
-  background: rgb(100,0,123);
-  background: radial-gradient(circle, rgba(100,0,123,1) 0%, rgba(62,20,86,1) 100%);
+  background: rgb(170, 69, 128);
+  background: radial-gradient(circle, rgb(245, 126, 219) 0%, rgb(238, 149, 226) 100%);
   overflow: hidden;
 }
 button{

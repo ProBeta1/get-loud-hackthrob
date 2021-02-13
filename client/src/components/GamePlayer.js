@@ -9,16 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { pink } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    height:'100%',
-    margin:'100px',
-    justifyContent:'flex-start'
-  },
+  
   media: {
     height: 300,
   },
@@ -44,9 +38,9 @@ function GamePlayer() {
   const [url, setUrl] = useState("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg");
 
   return (
-    <div className={classes.root}>
+    <div className="Game_A">
 
-    <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+    <ButtonGroup  color="primary" aria-label="contained primary button group">
       <Button style={btn}>Classic</Button>
       <Button style={btn}>Express</Button>
       <Button style={btn}>Challenge</Button>
@@ -61,10 +55,10 @@ function GamePlayer() {
           title="Song Guess "
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textPrimary" component="p">
             Sing a song related to the shown picture
           </Typography>
-          <form className={classes.text} noValidate       autoComplete="off">
+          <form className={classes.text} noValidate   autoComplete="off">
             <TextField id="outlined-basic" label="Search for a picture" variant="outlined" />
            </form>
         </CardContent>

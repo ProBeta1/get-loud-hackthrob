@@ -3,8 +3,8 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {auth} from './firebase/firebase';
 import Grid from '@material-ui/core/Grid';
 import Typical from 'react-typical'
-import AudioChat from './components/AudioChat';
-
+// import AudioChat from './components/AudioChat';
+import Navbar from './components/Navbar'
 
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
@@ -50,8 +50,8 @@ function App() {
     );
   }
   return (
-    <div className="App">
-        <AudioChat />
+    <div>
+        <Navbar/>
     </div>
   );
 }
