@@ -26,7 +26,7 @@ const searchBar = {
 
 function YoutubePlayer() {
   console.log("funtciot");
-  const [query,setQuery]=useState('');
+  const [query,setQuery]=useState('twice i cant stop me english karaoke');
   const [videos,setVideos]=useState([]);
   const [video,setVideo]=useState('');
   const [ytid, setYtid] = useState("2g811Eo7K8U");
@@ -39,7 +39,7 @@ function YoutubePlayer() {
       console.log(query);
   }
   useEffect(() => {
-    let API_KEY='AIzaSyARMIO1RIusrGebJdzOmTsJ107pMnHUxUg'
+    let API_KEY=process.env.REACT_APP_GOOGLE_API_KEY;
     const options = {
       q:query,
       part:'snippet',
