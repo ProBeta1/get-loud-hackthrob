@@ -2,34 +2,32 @@ import React,{useState,useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import searchYoutube from 'youtube-api-v3-search';
 import YouTube from 'react-youtube';
+import Button from '@material-ui/core/Button';
 
 // import { Component } from 'react';
 
 // import YTSearch from 'youtube-api-search'
 const opts = {
-    height: '500',
-    width: '500',
   };
   
 const searchBar = {
-
-    marginTop:'-50px',
-    marginBottom:'20px',
-    paddingLeft:'100px',
-    paddingRight:'100px',
-    paddingTop:'10px',
-    paddingBottom:'10px',
-    backgroundColor:'gray',
+    margin:'40px',
     borderRadius:'50px'
 }
 
+const textB = {
+  borderRadius:'30px',
+  margin:'20px',
+  width:'60%',
+  outline:'none',
+  padding:'10px'
+}
 
 function YoutubePlayer() {
-  console.log("funtciot");
-  const [query,setQuery]=useState('');
+  const [query,setQuery]=useState('stay by my side twice karaoke');
   const [videos,setVideos]=useState([]);
   const [video,setVideo]=useState('');
-  const [ytid, setYtid] = useState("2g811Eo7K8U");
+  const [ytid, setYtid] = useState("7sbsQQ-uu8g");
   const {register,handleSubmit,errors}=useForm();
   
   const onSubmit=(e)=>
@@ -39,9 +37,7 @@ function YoutubePlayer() {
       console.log(query);
   }
   useEffect(() => {
-    console.log('useeefect');
     let API_KEY=process.env.REACT_APP_GOOGLE_API_KEY;
-    console.log(process.env.REACT_APP_GOOGLE_API_KEY)
     // https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=YOUR_API_KEY
     const options = {
       q:query,
@@ -58,11 +54,12 @@ function YoutubePlayer() {
 
   , [query]);
   return (
-    <div>
+    <div style={{justifyContent:'center', alignItems:'center',padding:'50px', height:'100vh'}}>
       <form style={searchBar} onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" name="query" ref={register({required:'Please Enter all details'})} placeholder="Search the song" />
-        <input type="submit"  value="Submit" />
-        <h1>HIIII</h1>
+          <input type="text" name="query" ref={register({required:'Please Enter all details'})} placeholder="Search the song" style={textB}/>
+          <Button variant="contained" color="secondary" type="submit" value="submit">
+            Play
+          </Button>
       </form>
 
       <YouTube videoId={ytid} opts={opts} />

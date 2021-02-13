@@ -6,6 +6,7 @@ import AudioHead from './AudioHead';
 import YoutubePlayer from './YoutubePlayer';
 import boy from '../images/boy.png';
 import girl from '../images/girl.png';
+import GamePlayer from './GamePlayer';
 
 const Container = styled.div`
   height: 100vh;
@@ -146,9 +147,10 @@ function AudioChat() {
   return (
     <Container>
       <Row>
-        {UserAudio}
         <YoutubePlayer />
-        {PartnerAudio}
+        <GamePlayer />
+        {/* {UserAudio}
+        {PartnerAudio} */}
       </Row>
       <Row>
         {Object.keys(users).map(key => {
