@@ -55,6 +55,7 @@ function App() {
   return (
     <div>
         <Navbar/>
+        <HeartBubble />
     </div>
   );
 }

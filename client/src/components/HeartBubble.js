@@ -105,12 +105,11 @@ function HeartBubble(props) {
   }
 
   useEffect(() => {
-    //generateHeart(300, 300, null, null, 5);
+    generateHeart(500, 300, null, null, 5);
   },[])
 
   return (
-    <div style={{backgroundColor:'blue', height:'400px', width:'200px'}}>
-      <button onClick={(e)=>     generateHeart(300, 300, null, null, 5)}>Click</button>
+    <div>
     </div>
   )
 }
