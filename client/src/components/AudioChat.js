@@ -7,6 +7,7 @@ import YoutubePlayer from './YoutubePlayer';
 import boy from '../images/boy.png';
 import girl from '../images/girl.png';
 import GamePlayer from './GamePlayer';
+import HeartBubble from './HeartBubble';
 
 const Container = styled.div`
   height: 100vh;
@@ -19,7 +20,9 @@ const Container = styled.div`
 
 const Row = styled.div`
   display: flex;
-  width: 100%;
+  flexDirection:column;
+  width: 50%;
+  height:100%;
 `;
 
 
@@ -146,7 +149,8 @@ function AudioChat() {
   }
   return (
     <Container>
-      <Row>
+      <Row >
+        <HeartBubble />
         <YoutubePlayer />
         <GamePlayer />
         {/* {UserAudio}

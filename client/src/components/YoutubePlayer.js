@@ -54,7 +54,7 @@ function YoutubePlayer() {
 
   , [query]);
   return (
-    <div style={{justifyContent:'center', alignItems:'center',padding:'50px', height:'100vh'}}>
+    <div style={{justifyContent:'flex-start', alignItems:'flex-start',padding:'50px', height:'60%'}}>
       <form style={searchBar} onSubmit={handleSubmit(onSubmit)}>
           <input type="text" name="query" ref={register({required:'Please Enter all details'})} placeholder="Search the song" style={textB}/>
           <Button variant="contained" color="secondary" type="submit" value="submit">

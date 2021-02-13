@@ -4,6 +4,7 @@ import {auth} from './firebase/firebase';
 import Grid from '@material-ui/core/Grid';
 import Typical from 'react-typical'
 import AudioChat from './components/AudioChat';
+import HeartBubble from './components/HeartBubble';
 
 
 const uiConfig = {
@@ -52,6 +53,7 @@ function App() {
   return (
     <div className="App">
         <AudioChat />
+        <HeartBubble />
     </div>
   );
 }

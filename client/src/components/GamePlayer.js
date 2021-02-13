@@ -15,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height:'100%',
-    margin:'100px',
-    justifyContent:'flex-start'
+    margin:'50px',
+    height:'70%',
+    justifyContent:'flex-start',
   },
   media: {
     height: 300,
