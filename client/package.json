@@ -11,6 +11,7 @@
     "env": "0.0.2",
     "firebase": "^8.2.7",
     "react": "^16.13.1",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-audio-player": "^0.14.0",
     "react-dom": "^16.13.1",
     "react-firebaseui": "^4.1.0",
