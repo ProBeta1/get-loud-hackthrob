@@ -8,6 +8,7 @@ import HeartBubble from './components/HeartBubble';
 
 // import AudioChat from './components/AudioChat';
 import Navbar from './components/Navbar'
+import GreenRoom from './components/GreenRoom';
 
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
@@ -54,8 +55,7 @@ function App() {
   }
   return (
     <div>
-        <Navbar/>
-        <HeartBubble />
+        <Navbar />
     </div>
   );
 }
