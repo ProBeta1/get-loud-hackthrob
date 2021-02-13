@@ -20,7 +20,8 @@ const textB = {
   margin:'20px',
   width:'60%',
   outline:'none',
-  padding:'10px'
+  padding:'10px',
+  color:'black'
 }
 
 function YoutubePlayer() {
@@ -51,7 +52,7 @@ function YoutubePlayer() {
 
   , [query]);
   return (
-    <div className="container youtube_s" >
+    <div className="container" >
       <form style={searchBar} onSubmit={handleSubmit(onSubmit)}>
           <input type="text" name="query" ref={register({required:'Please Enter all details'})} placeholder="Search the song" style={textB}/>
           <Button variant="contained" color="secondary" type="submit" value="submit">
