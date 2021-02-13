@@ -2,7 +2,8 @@ import React from "react";
 import '../tailwind.css'
 import '../tailwind.min.css';
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom';
-import GamePlayer from "./GamePlayer";
+// import GamePlayer from "./GamePlayer";
+import Game from './Game'
 // import YoutubePlayer from "./YoutubePlayer";
 import AudioChat from "./AudioChat";
 const Nav=({ fixed }) =>{
@@ -15,16 +16,16 @@ const Nav=({ fixed }) =>{
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
               className="text-sm font-bold heading_NAV leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap text-white"
-              href=""
+              href="#"
             >SingwithYourValentine
             </a>
-            <button
+            {/* <button
               className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
               <i className="fas fa-bars"></i>
-            </button>
+            </button> */}
           </div>
           <div
             className={
@@ -37,7 +38,7 @@ const Nav=({ fixed }) =>{
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href="#"
                 >
                   <span className="ml-2"><Link className="nav-link" to="/">Home</Link></span>
                 </a>
@@ -46,7 +47,7 @@ const Nav=({ fixed }) =>{
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href="#"
                 >
                   <span className="ml-2"><Link className="nav-link" to="/gameplayer">GamePlayer</Link></span>
                 </a>
@@ -62,7 +63,7 @@ const Nav=({ fixed }) =>{
           <AudioChat/>
           </Route>
           <Route exact path="/gameplayer">
-          <GamePlayer/>
+          <Game/>
         </Route>  
       </Switch> 
       </BrowserRouter>
