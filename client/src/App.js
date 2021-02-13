@@ -6,6 +6,8 @@ import Typical from 'react-typical'
 import AudioChat from './components/AudioChat';
 import HeartBubble from './components/HeartBubble';
 
+// import AudioChat from './components/AudioChat';
+import Navbar from './components/Navbar'
 
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
@@ -51,9 +53,8 @@ function App() {
     );
   }
   return (
-    <div className="App">
-        <AudioChat />
-        <HeartBubble />
+    <div>
+        <Navbar/>
     </div>
   );
 }

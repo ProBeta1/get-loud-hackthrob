@@ -3,16 +3,16 @@ import {useForm} from 'react-hook-form'
 import searchYoutube from 'youtube-api-v3-search';
 import YouTube from 'react-youtube';
 import Button from '@material-ui/core/Button';
-
-// import { Component } from 'react';
-
-// import YTSearch from 'youtube-api-search'
+import '../App.css'
 const opts = {
+  width:'400px',
+  height:'400px'
   };
   
 const searchBar = {
     margin:'40px',
-    borderRadius:'50px'
+    borderRadius:'50px',
+    width:'400px'
 }
 
 const textB = {
@@ -25,8 +25,6 @@ const textB = {
 
 function YoutubePlayer() {
   const [query,setQuery]=useState('stay by my side twice karaoke');
-  const [videos,setVideos]=useState([]);
-  const [video,setVideo]=useState('');
   const [ytid, setYtid] = useState("7sbsQQ-uu8g");
   const {register,handleSubmit,errors}=useForm();
   
@@ -38,7 +36,6 @@ function YoutubePlayer() {
   }
   useEffect(() => {
     let API_KEY=process.env.REACT_APP_GOOGLE_API_KEY;
-    // https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=YOUR_API_KEY
     const options = {
       q:query,
       part:'snippet',
@@ -50,11 +47,11 @@ function YoutubePlayer() {
     }
     videoSearch();
   }
-   
+   //style={{justifyContent:'center', alignItems:'center',padding:'50px'}}
 
   , [query]);
   return (
-    <div style={{justifyContent:'flex-start', alignItems:'flex-start',padding:'50px', height:'60%'}}>
+    <div className="container youtube_s" >
       <form style={searchBar} onSubmit={handleSubmit(onSubmit)}>
           <input type="text" name="query" ref={register({required:'Please Enter all details'})} placeholder="Search the song" style={textB}/>
           <Button variant="contained" color="secondary" type="submit" value="submit">
@@ -62,7 +59,7 @@ function YoutubePlayer() {
           </Button>
       </form>
 
-      <YouTube videoId={ytid} opts={opts} />
+      <YouTube className="youtube_p" videoId={ytid} opts={opts} />
       
     </div>
   )
