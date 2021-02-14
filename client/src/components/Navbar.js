@@ -8,6 +8,11 @@ import Game from './Game'
 import AudioChat from "./AudioChat";
 const Nav=({ fixed }) =>{
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [roomId, setRoomId] = React.useState("None");
+
+  const handleRoomIdChange = (id) => {
+    setRoomId(id);
+  }
   return (
     <>
      <BrowserRouter>
@@ -60,10 +65,10 @@ const Nav=({ fixed }) =>{
       </nav>
        <Switch>
         <Route exact path="/">
-          <AudioChat/>
+          <AudioChat handleRoomIdChange={handleRoomIdChange}/>
           </Route>
           <Route exact path="/gameplayer">
-          <Game/>
+          <Game id={roomId}/>
         </Route>  
       </Switch> 
       </BrowserRouter>

@@ -46,6 +46,7 @@ function a11yProps(index) {
   };
 }
 
+
 const useStyles = makeStyles((theme) => ({
     media: {
         height: 300,
@@ -66,7 +67,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Game() {
+export default function Game(props) {
+
+  console.log("In game , id is - " + props.id);
+
   const onSubmit=(data)=>
     {
         console.log(data);
@@ -92,7 +96,20 @@ export default function Game() {
       <p className="text_L"> It's a simple Game only</p>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      {/* <Card className={classes.card}>
+       <form className="form_E" onSubmit={handleSubmit(onSubmit)}>
+            <div className="input_S">
+            <label className="text_C">Type few lines of the song you want your partner to guess and sing !</label>
+            <input name="text" type="textarea" className="textArea" ref={register({required:'Please Enter all details'})}></input>
+            </div> 
+            <div>
+                <input className="submit_B" type="submit"></input>
+            </div> 
+        </form>
+
+      </TabPanel>
+      <TabPanel  value={value} index={2}>
+       <p className="text_C" > Challenge Game Show Happening Here</p>
+       <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -108,20 +125,7 @@ export default function Game() {
            </form>
         </CardContent>
       </CardActionArea>
-    </Card> */}
-       <form className="form_E" onSubmit={handleSubmit(onSubmit)}>
-            <div className="input_S">
-            <label className="text_C">Enter hints of your favourite song</label>
-            <input name="text" type="textarea" className="textArea" ref={register({required:'Please Enter all details'})}></input>
-            </div> 
-            <div>
-                <input className="submit_B" type="submit"></input>
-            </div> 
-        </form>
-
-      </TabPanel>
-      <TabPanel  value={value} index={2}>
-       <p className="text_C" > Challenge Game Show Happening Here</p>
+    </Card>
       </TabPanel>
     </div>
   );

@@ -1,34 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
 import io from "socket.io-client";
 import Peer from "simple-peer";
-import styled from "styled-components";
 import AudioHead from './AudioHead';
 import boy from '../images/boy.png';
 import girl from '../images/girl.png';
 import '../App.css'
 import YoutubePlayer from './YoutubePlayer';
-// const Container = styled.div`
-//   height: 100vh;
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items:center;
-//   justify-content:center;
-// `;
-
-// const Row = styled.div`
-//   display: flex;
-//   width: 100%;
-// `;
+import { ft } from '../firebase/firebase';
 
 
-const Audio = styled.audio`
-  width: 200px;
-  height: 50px;
-  padding: 35px;
-`;
-
-function AudioChat() {
+function AudioChat(props) {
   const [yourID, setYourID] = useState("");
   const [yourName, setYourName] = useState("");
   const [users, setUsers] = useState({});
@@ -37,6 +18,7 @@ function AudioChat() {
   const [caller, setCaller] = useState("");
   const [callerSignal, setCallerSignal] = useState();
   const [callAccepted, setCallAccepted] = useState(false);
+  const [toSearch, setToSearch] = useState("lol");
 
   const socket = useRef();
 
@@ -95,6 +77,8 @@ function AudioChat() {
       peer.signal(signal);
     })
 
+    setToSearch(yourID);
+
   }
 
   function acceptCall() {
@@ -118,7 +102,26 @@ function AudioChat() {
 
     peer.signal(callerSignal);
 
+    console.log("ye hai mera dost : " + caller);
+    console.log("ye hu mai : " + yourID);
+
+    ft.collection('rooms').doc(caller).set({
+      peer1: caller,
+      peer2: yourID,
+      turn:1,
+    })
+
+    setToSearch(caller);
   }
+
+  useEffect(() => {
+      ft.collection("rooms").doc(toSearch)
+      .onSnapshot((doc) => {
+          console.log("saman = " + doc.data());
+      })
+      props.handleRoomIdChange(toSearch);
+    
+  },[toSearch]);
 
   let UserAudio;
   if (stream) {
