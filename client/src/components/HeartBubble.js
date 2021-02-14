@@ -12,13 +12,12 @@ function HeartBubble(props) {
 
   let hearts = [];
 
-  let brd = document.createElement("DIV");
+  let brd = document.createElement('div');
   document.body.insertBefore(brd, document.getElementById("board"));
 		
-  function generateHeart(x, y, xBound, xStart, scale)
+  function GenerateHeart(x, y, xBound, xStart, scale)
   {
-    console.log("creating heart");
-    let heart = document.createElement("DIV");
+    let heart = document.createElement("div");
     heart.setAttribute('class', 'heart');
     brd.appendChild(heart);
     heart.time = duration;
@@ -37,13 +36,13 @@ function HeartBubble(props) {
   }
 
   document.onmousedown = function(e) {
-    console.log("mouse down " + e);
+    // console.log("mouse down " + e);
     setDown(true);
     setEvent(e);
   }
   
   document.onmouseup = function(e) {
-    console.log("mouse up");
+    // console.log("mouse up");
     setDown(false);
   }
   
@@ -96,20 +95,21 @@ function HeartBubble(props) {
   {
     if(down)
     {
-
       var start = 1 - Math.round(Math.random()) * 2;
       var scale = Math.random() * Math.random() * 0.8 + 0.2;
       var bound = 30 + Math.random() * 20;
-      generateHeart(event.pageX - brd.offsetLeft + cursorXOffset, event.pageY - brd.offsetTop + cursorYOffset, bound, start, scale);
+      GenerateHeart(event.pageX - brd.offsetLeft + cursorXOffset, event.pageY - brd.offsetTop + cursorYOffset, bound, start, scale);
     }
   }
 
   useEffect(() => {
-    generateHeart(500, 300, null, null, 5);
+    GenerateHeart(500, 300, null, null, 5);
+    console.log("useffect");
   },[])
 
   return (
     <div>
+      <h1>HHHHH</h1>
     </div>
   )
 }
