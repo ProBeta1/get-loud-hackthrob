@@ -24,11 +24,12 @@ function GreenRoom() {
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
-    setText(e.target.value)
+    setText(JSON.stringify(e.target.value))
   }
 
   const handleJoinClick = () => {
-    setJoinKey(text);
+    console.log(text);
+    setJoinKey(parseInt(text));
     handleJoin();
   }
 
@@ -100,7 +101,7 @@ function GreenRoom() {
           OR
           <Grid container justify="center" alignItems="center" lignContent="center" >
             <form>
-              <input name="joinKey" placeholder="Enter the key" onChange={(e) => handleChange(e)} style={textB} />
+              <input name="join" placeholder="Enter the key" onChange={(e) => handleChange(e)} style={textB} />
             </form>
             <Button variant="contained" color="primary" onClick={handleJoinClick}>
                 Join a room
