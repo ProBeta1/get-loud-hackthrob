@@ -6,10 +6,13 @@ import boy from '../images/boy.png';
 import girl from '../images/girl.png';
 import '../App.css'
 import YoutubePlayer from './YoutubePlayer';
-import { ft } from '../firebase/firebase';
+import { ft, auth } from '../firebase/firebase';
 
 
 function AudioChat(props) {
+
+  const uid = auth().currentUser.uid;
+
   const [yourID, setYourID] = useState("");
   const [yourName, setYourName] = useState("");
   const [users, setUsers] = useState({});
@@ -102,13 +105,10 @@ function AudioChat(props) {
 
     peer.signal(callerSignal);
 
-    console.log("ye hai mera dost : " + caller);
-    console.log("ye hu mai : " + yourID);
-
     ft.collection('rooms').doc(caller).set({
       peer1: caller,
       peer2: yourID,
-      turn:1,
+      turn:uid,
     })
 
     setToSearch(caller);
@@ -137,28 +137,43 @@ function AudioChat(props) {
     );
   }
 
-  let incomingCall;
+  if( callAccepted ){
+    return(
+      <div className="container mainpage">
+      <YoutubePlayer/>
+        {UserAudio}
+        {PartnerAudio}
+      </div>
+    )
+  }
+
+  let incomingCall; 
+  
   if (receivingCall) {
     incomingCall = (
       <div className="buttonforaccept">
         <h1 >{caller} is calling you</h1>
-        <button onClick={acceptCall}>Accept</button>
+        <button style={{padding:'5px'}} onClick={acceptCall}>Accept</button>
       </div>
     )
   }
+
   return (
     <div className="container mainpage">
       <YoutubePlayer/>
         {UserAudio}
         {PartnerAudio}
-        {Object.keys(users).map(key => {
-          if (key === yourID) {
-            return null;
-          }
-          return (
-            <button className="buttonforaccept"  onClick={() => callPeer(key)}>Call {key}</button>
-          );
-        })}
+        <div style={{display:'flex', flexDirection:'column'}}>
+            {Object.keys(users).map(key => {
+              if (key === yourID) {
+                return null;
+              }
+              return (
+                <button style={{padding:'20px'}} className="buttonforaccept"  onClick={() => callPeer(key)}>Call {key}</button>
+              );
+            })}
+        </div>
+        
         {incomingCall}
         </div>
   );

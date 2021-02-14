@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,10 +9,12 @@ import Box from '@material-ui/core/Box';
 import {useForm} from 'react-hook-form'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+import { Button } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import TextField from '@material-ui/core/TextField';
+import { ft, auth } from '../firebase/firebase';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -67,14 +69,59 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const dhimDhim = {
+    color:'black',
+    fontSize:'25px',
+    margin:'25px',
+    alignSelf:'flex-end'
+}
+
 export default function Game(props) {
 
-  console.log("In game , id is - " + props.id);
+  const curid = auth().currentUser.uid;
 
-  const onSubmit=(data)=>
-    {
-        console.log(data);
+  const [id, setId] = useState(props.id);
+
+  const [turn, setTurn] = useState(0);
+  const [guessLine, setGuessLine] = useState("haha haha");
+
+  useEffect(() => {
+    if(id !== 'lol'){
+      ft.collection("rooms").doc(props.id)
+      .onSnapshot((doc) => {
+        if(doc.data()){
+          setTurn(doc.data().turn);
+        }
+      })
     }
+    
+  },[id])
+
+  useEffect(() => {
+    if(turn === curid){
+      //read guess
+      ft.collection("rooms").doc(props.id)
+      .onSnapshot((doc) => {
+        if(doc.data()){
+          setGuessLine(doc.data().guessLine || "Nothing to show");
+        }
+      }) 
+    }
+  },[turn])
+
+  const handleSwap = () => {
+
+  }
+
+  const onSubmit = (data) => {
+          //write guess
+          let roomRef = ft.collection('rooms').doc(props.id);
+          roomRef.set({
+              guessLine: data.text
+          }, { merge: true });
+          alert("Lines sent to your partner!")
+  }
+
   const {register,handleSubmit,errors}=useForm();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -82,6 +129,32 @@ export default function Game(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  let expressContent;
+  if(turn !== 0){
+    // if this is my chance
+    if(turn === curid){
+      expressContent = (
+        <div>
+          <h2 style={dhimDhim}>Your partner has given this hint !</h2>
+            <p style={dhimDhim}>{guessLine}</p>
+        </div>
+      )
+    }
+    else{
+      expressContent = (
+        <form className="form_E" onSubmit={handleSubmit(onSubmit)}>
+          <div className="input_S">
+          <label className="text_C">Type few lines of the song you want your partner to guess and sing !</label>
+          <input name="text" type="textarea" className="textArea" ref={register({required:'Please Enter all details'})}></input>
+          </div> 
+          <div style={{display:'flex', justifyContent:'center'}}>
+              <input className="submit_B" type="submit"></input>
+          </div> 
+        </form>
+      )
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -96,16 +169,7 @@ export default function Game(props) {
       <p className="text_L"> It's a simple Game only</p>
       </TabPanel>
       <TabPanel value={value} index={1}>
-       <form className="form_E" onSubmit={handleSubmit(onSubmit)}>
-            <div className="input_S">
-            <label className="text_C">Type few lines of the song you want your partner to guess and sing !</label>
-            <input name="text" type="textarea" className="textArea" ref={register({required:'Please Enter all details'})}></input>
-            </div> 
-            <div>
-                <input className="submit_B" type="submit"></input>
-            </div> 
-        </form>
-
+        {expressContent}
       </TabPanel>
       <TabPanel  value={value} index={2}>
        <p className="text_C" > Challenge Game Show Happening Here</p>
@@ -127,6 +191,19 @@ export default function Game(props) {
       </CardActionArea>
     </Card>
       </TabPanel>
+
+      <div style={{display:'flex', justifyContent:'flex-end'}}>
+        {
+          turn !== curid?
+            <h2 style={dhimDhim}>Other person has to sing</h2>
+          :
+          <h2 style={dhimDhim}>Its your turn, rise and shine</h2>
+        }
+          <Button style={{margin:'30px'}} variant="contained" color="primary" onClick={handleSwap}>
+                 Swap Turn
+             </Button> 
+      </div>     
     </div>
+
   );
 }

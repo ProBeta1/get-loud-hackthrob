@@ -47,6 +47,8 @@
 }
 .form_E label{
   color:black;
+  font-size: x-large;
+  font-weight: bold;
 }
 .textArea{
   width:400px;
@@ -55,7 +57,9 @@
 .input_S{
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
 }
 .form_E .submit_B{
   width:100px;

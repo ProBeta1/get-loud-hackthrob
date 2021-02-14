@@ -5,7 +5,7 @@ import YouTube from 'react-youtube';
 import Button from '@material-ui/core/Button';
 import '../App.css'
 const opts = {
-  width:'400px',
+  width:'600px',
   height:'400px'
   };
   
@@ -46,6 +46,7 @@ function YoutubePlayer() {
       let result = await searchYoutube(API_KEY,options);
       setYtid(result.items[0].id.videoId);
     }
+
     videoSearch();
   }
    //style={{justifyContent:'center', alignItems:'center',padding:'50px'}}
