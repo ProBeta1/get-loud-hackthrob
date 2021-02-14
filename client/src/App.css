@@ -21,6 +21,10 @@
 
 .buttonforaccept{
   color:rgb(22, 5, 5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .youtube_s{
   display: flex;

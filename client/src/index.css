@@ -8,7 +8,7 @@ body, ul, h1, h2, h3, p, button, a, div{
 }
 body{
   background: rgb(100,0,123);
-  background: radial-gradient(circle, rgb(255, 77, 77) 0%, rgb(253, 153, 153) 100%);
+  background: radial-gradient(circle, rgb(255, 148, 148) 0%, rgb(255, 160, 247) 100%);
   overflow: hidden;
 }
 button{

@@ -2,10 +2,8 @@ import React from 'react'
 import styled from "styled-components";
 
 const background = {
-  backgroundColor:'blue',
-  borderRadius:'50px',
   height:'420px',
-  padding:'20px',
+  padding:'5px',
   margin:'30px'
 }
 const Audio = styled.audio`
@@ -16,8 +14,8 @@ const Audio = styled.audio`
 
 const image = {
   borderRadius:'50px',
-  padding:'20px',
-  height:'300px'
+  padding:'10px',
+  height:'300px',
 }
 
 // UI component for person 

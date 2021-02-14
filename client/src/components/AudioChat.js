@@ -8,6 +8,11 @@ import '../App.css'
 import YoutubePlayer from './YoutubePlayer';
 import { ft, auth } from '../firebase/firebase';
 
+const image = {
+  borderRadius:'20px',
+  maxHeight:'200px',
+  maxWidth:'200px'
+}
 
 function AudioChat(props) {
 
@@ -126,14 +131,14 @@ function AudioChat(props) {
   let UserAudio;
   if (stream) {
     UserAudio = (
-      <AudioHead audio={userAudio} muted={true} who={boy}/>
+      <AudioHead audio={userAudio} muted={true} who="https://tigerbeat.com/wp-content/uploads/2016/10/GettyImages-602353804-845x640.jpg"/>
     );
   }
 
   let PartnerAudio;
   if (callAccepted) {
     PartnerAudio = (
-      <AudioHead audio={partnerAudio} muted={false} who={girl}/>
+      <AudioHead audio={partnerAudio} muted={false} who="http://theteenagertoday.com/wp/wp-content/uploads/2018/05/camila-cabello.jpg"/>
     );
   }
 
@@ -152,8 +157,9 @@ function AudioChat(props) {
   if (receivingCall) {
     incomingCall = (
       <div className="buttonforaccept">
-        <h1 >{caller} is calling you</h1>
-        <button style={{padding:'5px'}} onClick={acceptCall}>Accept</button>
+        <h2>Your partner is calling you </h2>
+        <img src="https://i.pinimg.com/originals/20/b6/86/20b6860e2f5560e6fae086a51051bdbc.gif" style={image} />
+        <button style={{padding:'5px', margin:'5px'}} onClick={acceptCall}>Accept</button>
       </div>
     )
   }
@@ -161,9 +167,8 @@ function AudioChat(props) {
   return (
     <div className="container mainpage">
       <YoutubePlayer/>
-        {UserAudio}
-        {PartnerAudio}
         <div style={{display:'flex', flexDirection:'column'}}>
+        {UserAudio}
             {Object.keys(users).map(key => {
               if (key === yourID) {
                 return null;
@@ -173,6 +178,7 @@ function AudioChat(props) {
               );
             })}
         </div>
+        {PartnerAudio}
         
         {incomingCall}
         </div>
